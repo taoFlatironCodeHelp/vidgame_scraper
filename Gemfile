@@ -12,3 +12,5 @@ gem "rspec", "~> 3.0"
 gem "rubocop", "~> 1.7"
 
 gem 'colorize', '~> 0.8.1'
+
+gem 'nokogiri', '~> 1.12', '>= 1.12.5'

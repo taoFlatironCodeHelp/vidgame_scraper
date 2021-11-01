@@ -1,0 +1,3 @@
+class VidgameScraper::Items
+
+end
