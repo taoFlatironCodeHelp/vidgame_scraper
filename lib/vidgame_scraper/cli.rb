@@ -10,10 +10,21 @@ class VidgameScraper::CLI
         case input
         when "video game"
             puts "in" + " Video Games".colorize(:green)
+            #scrape the video games page
+            url = "https://austin.craigslist.org/d/video-gaming/search/vga"
+            VidgameScraper::Scraper.scrap_catagories(url)
+            
+
         when "cell phone"
             puts "In" + " Cell Phone".colorize(:green)
+            # https://austin.craigslist.org/d/cell-phones/search/moa
+
+
         when "furniture"
             puts "In" + " Furniture".colorize(:green)
+            # https://austin.craigslist.org/d/furniture/search/fua
+
+
         when "exit"
             puts "Goodbye!".colorize(:red)
         else
