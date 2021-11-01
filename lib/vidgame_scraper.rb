@@ -1,8 +1,9 @@
-# frozen_string_literal: true
+# aka this is an environment file.
+
+require 'nokogiri'
+require 'pry'
+require 'colorize'
 
 require_relative "vidgame_scraper/version"
+require_relative "vidgame_scraper/cli"
 
-module VidgameScraper
-  class Error < StandardError; end
-  # Your code goes here...
-end
