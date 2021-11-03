@@ -10,10 +10,12 @@ class VidgameScraper::Category
 
         @@all << self   #saving the obj.
 
-        def self.all
-            @@all
-        end
+        
 
+    end
+
+    def self.all
+        @@all
     end
 
 end 

@@ -9,39 +9,38 @@ class VidgameScraper::CLI
         input = gets.strip.downcase
         case input
         when "1"
-            puts "In".colorize(:white) + " Video Games ↓".colorize(:green)
-            #scrape the video games page
-            url = "https://craigslist.org/"
-            categoires = VidgameScraper::Scraper.scrap_catagories(url)
-            puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-            puts "Link:".colorize(:white) + " #{categoires[19].name}"
-            puts "URL: ".colorize(:white) + " #{categoires[19].url}"
-            puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-            sub_out
+            puts "In".colorize(:white) + " Video Games ↓".colorize(:green) + "\nLoading code..."
+            scrape_video_games
+            list_categories
+            
+            
+
+            # sub_out #loop if user want to conntinue
             
 
     
 
         when "2"
-            puts "In".colorize(:white) + " Tickets ↓".colorize(:green)
+            puts "In".colorize(:white) + " Tickets ↓".colorize(:green) + "\nLoading code..."
             url = "https://craigslist.org/"
-            categoires = VidgameScraper::Scraper.scrap_catagories(url)
-            puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-            puts "Link:".colorize(:white) + " #{categoires[15].name}"
-            puts "URL: ".colorize(:white) + "  #{categoires[15].url}"
-            puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+            categories = VidgameScraper::Scraper.scrap_categories(url)
+            puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+            puts "Link:".colorize(:white) + " #{categories[15].name}"
+            puts "URL: ".colorize(:white) + "  #{categories[15].url}"
+            puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+            puts "Done loading"
             sub_out
 
 
 
         when "3"
-            puts "In".colorize(:white) + " Furniture ↓".colorize(:green)
-            url = "https://craigslist.org/"
-            categoires = VidgameScraper::Scraper.scrap_catagories(url)
-            puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-            puts "Link:".colorize(:white) + " #{categoires[2].name}"
-            puts "URL: ".colorize(:white) + " #{categoires[2].url}"
-            puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+            puts "In".colorize(:white) + " Furniture ↓".colorize(:green) + "\nLoading code..."
+            # url = "https://craigslist.org/"
+            # # categories = VidgameScraper::Scraper.scrap_categories(url)
+            # puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+            # puts "Link:".colorize(:white) + " #{categories[2].name}"
+            # puts "URL: ".colorize(:white) + " #{categories[2].url}"
+            # puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
             sub_out
             
 
@@ -57,6 +56,21 @@ class VidgameScraper::CLI
     end
 end
 
+    def list_categories
+        categories = VidgameScraper::Category.all
+            puts "Choose which category you want to see the deals for:"
+            #lists categories
+            #responds to user input when they choose a category
+
+            categories.each.with_index(1) do |category, index|
+                puts "#{index}. #{category.name}"
+            end
+    end
+
+    def scrape_video_games
+        url = "https://craigslist.org/"
+        VidgameScraper::Scraper.scrap_categories(url)
+    end
 
     def sub_out 
         puts "Would like to see the list again?".colorize(:white) + " (" + "'y'".colorize(:green) + "/" + "'n'".colorize(:red) + ")" 
@@ -72,8 +86,6 @@ end
         end
     end
 
-
-
-def exit_program
-    puts "Goodbye, Thank you for visiting!".colorize(:red)
-end
+    def exit_program
+        puts "Goodbye, Thank you for visiting!".colorize(:red)
+    end

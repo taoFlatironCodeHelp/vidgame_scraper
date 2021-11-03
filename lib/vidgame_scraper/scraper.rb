@@ -1,6 +1,6 @@
 class VidgameScraper::Scraper
 
-    def self.scrap_catagories(url)
+    def self.scrap_categories(url)
         #open the url and scrape all the catagories
         
         webpage = Nokogiri::HTML(open(url))
@@ -20,12 +20,6 @@ end
 
 # link.elements[0].attributes["href"].value => gets me the linkf or "Furniture"
 
-
-# ~~ Left column    
-
-# section = webpage.css("#sss0") and then
-# section.css("li") => shows the whole list of itme in that column.
-# seciton.css("li")[17].text => shows "cell phones"
 
 #~~ Right column
 
