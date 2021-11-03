@@ -21,9 +21,17 @@ class VidgameScraper::CLI
 
             url = "https://austin.craigslist.org/d/video-gaming/search/vga"
             categories = VidgameScraper::Scraper.scrape_categories(url)
-            # VidgameScraper::Scraper.scrap_categories(url)
-            puts "#{categories[1].name}"
-            puts "#{categories[1].url}"
+            categories = VidgameScraper::Category.all
+            puts "choose which category u want to see cuh"
+
+                categories.each.with_index(1) do |category, index|
+                    puts "#{index}. #{category.name}"
+                end
+
+
+
+
+            
             # sub_out #loop if user want to conntinue
 
         when "2"
