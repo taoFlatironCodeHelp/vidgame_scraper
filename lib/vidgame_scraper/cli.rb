@@ -9,34 +9,44 @@ class VidgameScraper::CLI
         input = gets.strip.downcase
         case input
         when "1"
-            puts "in" + " Video Games".colorize(:green)
+            puts "In".colorize(:white) + " Video Games ↓".colorize(:green)
             #scrape the video games page
             url = "https://craigslist.org/"
             categoires = VidgameScraper::Scraper.scrap_catagories(url)
-            puts "Link: #{categoires[19].name}"
-            puts "URL: #{categoires[19].url}"
+            puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+            puts "Link:".colorize(:white) + " #{categoires[19].name}"
+            puts "URL: ".colorize(:white) + " #{categoires[19].url}"
+            puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
             sub_out
             
 
     
 
         when "2"
-            puts "In" + " Tickets".colorize(:green)
+            puts "In".colorize(:white) + " Tickets ↓".colorize(:green)
             url = "https://craigslist.org/"
             categoires = VidgameScraper::Scraper.scrap_catagories(url)
-            puts "Link: #{categoires[15].name}"
-            puts "URL: #{categoires[15].url}"
+            puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+            puts "Link:".colorize(:white) + " #{categoires[15].name}"
+            puts "URL: ".colorize(:white) + "  #{categoires[15].url}"
+            puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
             sub_out
 
 
 
         when "3"
-            puts "In" + " Furniture".colorize(:green)
+            puts "In".colorize(:white) + " Furniture ↓".colorize(:green)
+            url = "https://craigslist.org/"
+            categoires = VidgameScraper::Scraper.scrap_catagories(url)
+            puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+            puts "Link:".colorize(:white) + " #{categoires[2].name}"
+            puts "URL: ".colorize(:white) + " #{categoires[2].url}"
+            puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
             sub_out
             
 
         when "exit"
-            puts "Goodbye!".colorize(:red)
+            puts "Goodbye, Thank you for visiting!".colorize(:red)
         else
             puts "Sorry invalid answer".colorize(:red)
             sub_out
@@ -65,5 +75,5 @@ end
 
 
 def exit_program
-    puts "Goodbye!".colorize(:red)
+    puts "Goodbye, Thank you for visiting!".colorize(:red)
 end
