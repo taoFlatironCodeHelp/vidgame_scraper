@@ -1,4 +1,4 @@
-class VidgameScraper::ScraperR
+class VidgameScraper::Scraper
 
     def self.scrap_catagories(url)
         #open the url and scrape all the catagories
@@ -7,12 +7,7 @@ class VidgameScraper::ScraperR
         section = webpage.css("#sss1") #the right column fromt the "for sale section"
         array_of_links = section.css("li") # => an array of links.
 
-        
-
-
-
-
-        #array of the right side of the form from "for sale"
+                #array of the right side of the form from "for sale"
         array_of_links.map do |link|
             # binding.pry
             VidgameScraper::Category.new(link.text, link.elements[0].attributes["href"].value)
