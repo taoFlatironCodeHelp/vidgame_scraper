@@ -2,6 +2,10 @@ class VidgameScraper::CLI
 
     def start   #instance method
         puts "\n         Welcome to my".colorize(:white) +  " CLI!".colorize(:blue)
+        menu
+    end
+
+    def menu
         puts "What category do you want deals on today?".colorize(:white)
         puts " \n[1] Video Games,".colorize(:white) + " [2] Tickets,".colorize(:white) + " [3] Furniture".colorize(:white) + " or" + " Exit".colorize(:red)
         puts "\nType either" + " '1',".colorize(:white) + "'2',".colorize(:white) + "'3'".colorize(:white) + " or" +  " 'Exit'.".colorize(:red)
@@ -12,13 +16,9 @@ class VidgameScraper::CLI
             puts "In".colorize(:white) + " Video Games ↓".colorize(:green) + "\nLoading code..."
             scrape_video_games
             list_categories
-            
-            
+            choose_category
 
             # sub_out #loop if user want to conntinue
-            
-
-    
 
         when "2"
             puts "In".colorize(:white) + " Tickets ↓".colorize(:green) + "\nLoading code..."
@@ -52,9 +52,7 @@ class VidgameScraper::CLI
             
             #they input something incorrect
         end
-    
-    end
-end
+    end 
 
     def list_categories
         categories = VidgameScraper::Category.all
@@ -67,8 +65,28 @@ end
             end
     end
 
+    def choose_category
+        puts "\nChoose a category by typing a number:"
+        input = gets.strip.to_i
+        max_value = VidgameScraper::Category.all.length
+        if input.between?(1, max_value)
+            category = VidgameScraper::Category.all[input-1]
+            display_categories_items(category)
+            #valid input
+        else
+            #not valid input
+            puts "Please put in a valid input"
+            list_categories
+            choose_category
+        end
+    end
+
+    def display_categories_items(category)
+
+    end
+
     def scrape_video_games
-        url = "https://craigslist.org/"
+        url = "https://austin.craigslist.org/"
         VidgameScraper::Scraper.scrap_categories(url)
     end
 
@@ -89,3 +107,4 @@ end
     def exit_program
         puts "Goodbye, Thank you for visiting!".colorize(:red)
     end
+end

@@ -6,11 +6,9 @@ class VidgameScraper::Category
 
     def initialize(name, url)
         @name = name
-        @url = "https://austin.craigslist.org" + url
+        @url = "https://austin.craigslist.org/" + url
 
         @@all << self   #saving the obj.
-
-        
 
     end
 

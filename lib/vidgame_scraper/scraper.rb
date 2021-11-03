@@ -13,9 +13,19 @@ class VidgameScraper::Scraper
             VidgameScraper::Category.new(link.text, link.elements[0].attributes["href"].value)
         end
 
+        # ~~~~~~~~~~~~~~~~
+        # webpage = Nokogiri::HTML(open(url))
+        # section = webpage.css("rows") #the right column fromt the "for sale section"
+        # array_of_links = section.css(".results-row")
+
+        # array_of_links.map do |link|
+        #     VidgameScraper::Category.new(link.firts.inner_text, link.first.attributes["href"].value)
+        # end
+
+        
+
         # binding.pry
     end
-
 end
 
 # link.elements[0].attributes["href"].value => gets me the linkf or "Furniture"
