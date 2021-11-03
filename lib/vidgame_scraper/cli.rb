@@ -14,10 +14,16 @@ class VidgameScraper::CLI
         case input
         when "1"
             puts "In".colorize(:white) + " Video Games ↓".colorize(:green) + "\nLoading code..."
-            scrape_video_games
-            list_categories
-            choose_category
+            
+            # scrape_video_games
+            # list_categories
+            # choose_category
 
+            url = "https://austin.craigslist.org/d/video-gaming/search/vga"
+            categories = VidgameScraper::Scraper.scrape_categories(url)
+            # VidgameScraper::Scraper.scrap_categories(url)
+            puts "#{categories[1].name}"
+            puts "#{categories[1].url}"
             # sub_out #loop if user want to conntinue
 
         when "2"
@@ -54,41 +60,41 @@ class VidgameScraper::CLI
         end
     end 
 
-    def list_categories
-        categories = VidgameScraper::Category.all
-            puts "Choose which category you want to see the deals for:"
-            #lists categories
-            #responds to user input when they choose a category
+    # def list_categories
+    #     categories = VidgameScraper::Category.all
+    #         puts "Choose which category you want to see the deals for:"
+    #         #lists categories
+    #         #responds to user input when they choose a category
 
-            categories.each.with_index(1) do |category, index|
-                puts "#{index}. #{category.name}"
-            end
-    end
+    #         categories.each.with_index(1) do |category, index|
+    #             puts "#{index}. #{category.name}"
+    #         end
+    # end
 
-    def choose_category
-        puts "\nChoose a category by typing a number:"
-        input = gets.strip.to_i
-        max_value = VidgameScraper::Category.all.length
-        if input.between?(1, max_value)
-            category = VidgameScraper::Category.all[input-1]
-            display_categories_items(category)
-            #valid input
-        else
-            #not valid input
-            puts "Please put in a valid input"
-            list_categories
-            choose_category
-        end
-    end
+    # def choose_category
+    #     puts "\nChoose a category by typing a number:"
+    #     input = gets.strip.to_i
+    #     max_value = VidgameScraper::Category.all.length
+    #     if input.between?(1, max_value)
+    #         category = VidgameScraper::Category.all[input-1]
+    #         display_category_items(category)
+    #         #valid input
+    #     else
+    #         #not valid input
+    #         puts "Please put in a valid input"
+    #         list_categories
+    #         choose_category
+    #     end
+    # end
 
-    def display_categories_items(category)
+    # def display_category_items(category)
+    #     VidgameScraper::Scraper.scrape_items(category)
+    # end
 
-    end
-
-    def scrape_video_games
-        url = "https://austin.craigslist.org/"
-        VidgameScraper::Scraper.scrap_categories(url)
-    end
+    # def scrape_video_games
+    #     url = "https://austin.craigslist.org/"
+    #     VidgameScraper::Scraper.scrap_categories(url)
+    # end
 
     def sub_out 
         puts "Would like to see the list again?".colorize(:white) + " (" + "'y'".colorize(:green) + "/" + "'n'".colorize(:red) + ")" 

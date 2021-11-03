@@ -1,17 +1,38 @@
 class VidgameScraper::Scraper
 
-    def self.scrap_categories(url)
+    def self.scrape_categories(url)
         #open the url and scrape all the catagories
         
         webpage = Nokogiri::HTML(open(url))
-        section = webpage.css("#sss1") #the right column fromt the "for sale section"
-        array_of_links = section.css("li") # => an array of links.
-
-                #array of the right side of the form from "for sale"
+        section = webpage.css(".rows").css(".result-row").css(".result-info").css(".result-heading")
+        # binding.pry   
+        array_of_links = section.css("h3 a.hdrlnk")
+        
         array_of_links.map do |link|
-            # binding.pry
-            VidgameScraper::Category.new(link.text, link.elements[0].attributes["href"].value)
+            VidgameScraper::Category.new(link.text, link.attributes["href"].value)
         end
+       #will return a list of the items for sale?? 
+    end
+
+
+
+       
+end
+
+     #link.attributes["href"].valu shows the URL
+
+
+        #array of the right side of the form from "for sale"
+        # array_of_links.map do |link|
+        #     # binding.pry
+        #     VidgameScraper::Category.new(link.text, link.elements[0].attributes["href"].value)
+        # end
+
+    # def self.scrape_items(category)
+    # webpage = Nokogiri::HTML(open(category.url))
+    # binding.pry
+    # # items = webpage.css("")
+    # end
 
         # ~~~~~~~~~~~~~~~~
         # webpage = Nokogiri::HTML(open(url))
@@ -25,8 +46,6 @@ class VidgameScraper::Scraper
         
 
         # binding.pry
-    end
-end
 
 # link.elements[0].attributes["href"].value => gets me the linkf or "Furniture"
 
