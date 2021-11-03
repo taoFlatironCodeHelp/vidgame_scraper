@@ -5,6 +5,7 @@ require 'open-uri'
 require 'pry'
 require 'colorize'
 require 'colorized_string'
+require 'net/http'
 
 
 require_relative "vidgame_scraper/version"

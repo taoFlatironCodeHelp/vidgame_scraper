@@ -6,7 +6,9 @@ class VidgameScraper::Category
 
     def initialize(name, url)
         @name = name
-        @url = "https://austin.craigslist.org/d/video-gaming/search/vga" + url
+        # @url = "https://www.gamestop.com" + url #Gamestop test
+        @url = "https://austin.craigslist.org" + url
+        
 
         @@all << self   #saving the obj.
 
