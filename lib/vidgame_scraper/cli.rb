@@ -3,12 +3,12 @@ class VidgameScraper::CLI
     def start   #instance method
         puts "\n         Welcome to my".colorize(:white) +  " CLI!".colorize(:blue)
         puts "What category do you want deals on today?".colorize(:white)
-        puts " \nVideo Games,".colorize(:white) + " Tickets,".colorize(:white) + " Furniture".colorize(:white) + " or" + " Exit".colorize(:red)
-        puts "\nType either" + " 'Video Games',".colorize(:white) + "'Tickets',".colorize(:white) + "'Furniture'".colorize(:white) + " or" +  " 'Exit'.".colorize(:red)
+        puts " \n [1] Video Games,".colorize(:white) + " [2] Tickets,".colorize(:white) + " [3] Furniture".colorize(:white) + " or" + " Exit".colorize(:red)
+        puts "\nType either" + " '1',".colorize(:white) + "'2',".colorize(:white) + "'3'".colorize(:white) + " or" +  " 'Exit'.".colorize(:red)
 
         input = gets.strip.downcase
         case input
-        when "video games"
+        when "1"
             puts "in" + " Video Games".colorize(:green)
             #scrape the video games page
             url = "https://craigslist.org/"
@@ -17,11 +17,11 @@ class VidgameScraper::CLI
             puts "URL: #{categoires[19].url}"
     
 
-        when "tickets"
+        when "2"
             puts "In" + " Tickets".colorize(:green)
 
 
-        when "furniture"
+        when "3"
             puts "In" + " Furniture".colorize(:green)
 
 
