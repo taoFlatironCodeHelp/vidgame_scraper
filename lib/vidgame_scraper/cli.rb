@@ -17,7 +17,7 @@ class VidgameScraper::CLI
             puts "URL: #{categoires[19].url}"
     
 
-        when "Tickets"
+        when "tickets"
             puts "In" + " Tickets".colorize(:green)
 
 
