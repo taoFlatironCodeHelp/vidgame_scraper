@@ -2,4 +2,12 @@
 
 require_relative "../lib/vidgame_scraper"
 
+#VidGame
+#tickets
+#funriture
+
+# VidgameScraper::Category.new("Video Games", "https://austin.craigslist.org/d/video-gaming/search/vga")
+# VidgameScraper::Category.new("Tickets", "tickets")
+# VidgameScraper::Category.new("furniture", "furr")
+
 VidgameScraper::CLI.new.start

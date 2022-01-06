@@ -5,11 +5,12 @@ require 'open-uri'
 require 'pry'
 require 'colorize'
 require 'colorized_string'
-require 'net/http'
+# require 'net/http'
 
 
 require_relative "vidgame_scraper/version"
 require_relative "vidgame_scraper/cli"
 require_relative "vidgame_scraper/scraper"
 require_relative "vidgame_scraper/category"
+require_relative "vidgame_scraper/deal" 
 
