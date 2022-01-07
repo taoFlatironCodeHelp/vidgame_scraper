@@ -14,7 +14,7 @@ class VidgameScraper::Scraper
         #will return a list of the items for sale?? 
     end
 
-    def self.scrape_items(category)
+    def self.scrape_items(category)         
         webpage = Nokogiri::HTML(open(category.url))
         items = webpage.css(".body")
         items.each do |card|
@@ -36,7 +36,7 @@ class VidgameScraper::Scraper
             deal.price = name_and_price[1]
 
             category.add_deal(deal)
-            # binding.pry
+            #  binding.pry
         end
     end
 end

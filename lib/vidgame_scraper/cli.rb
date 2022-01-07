@@ -67,11 +67,12 @@ class VidgameScraper::CLI
         puts "One moment please while the code loads...".colorize(:green)
         
         # if category.description == []
-        #     VidgameScraper::Scraper.scrape_items(category)
         # end
-        # if category.deals == []
-        #     puts "Sorry idk what i am doing."
-        # end
+        
+        if category.deals == []
+            VidgameScraper::Scraper.scrape_items(category)
+            # puts "Sorry idk what i am doing."
+        end
 
         puts "Here are the deals for #{category.name}:\n"
         # binding.pry
